@@ -1,0 +1,18 @@
+Index: public/home.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Title</title>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/home.html b/public/home.html
+--- a/public/home.html	
++++ b/public/home.html	
+@@ -3,6 +3,7 @@
+ <head>
+     <meta charset="UTF-8">
+     <title>Title</title>
++    <button id="Switch" type = "button" onclick = "/home" class = "button">Switch</button>button>
+ </head>
+ <body>
+ 

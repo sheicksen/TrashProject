@@ -1,4 +1,5 @@
 import pygame
+import sys
 
 class Character(pygame.sprite.Sprite):
     """Returns a character whose stats correspond with what's been unlocked by the player"""
@@ -17,4 +18,9 @@ class Monster(pygame.sprite.Sprite):
         super().__init__()
         self.sprite = []
 
+#set screen background
+screen_width = 384
+screen_height = 128
+screen = pygame.display.set_mode(screen_width,screen_height)
+background = pygame.image.load()
 

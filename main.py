@@ -1,11 +1,15 @@
-from flask import Flask
+from flask import Flask, redirect, url_for, render_template, request
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    return "<p> Hello World!</p>"
+    return render_template("index.html")
+
+@app.route("/profile/<username>")
+def get_profile(username):
+    return render_template("profile.html", username=username)
 
 
 if __name__ == '__main__':

@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ username }}</title>
-</head>
+{% extends "layout.html" %}
+
+{% block content %}
 <body>
     <div>
         <h1>{{ username }}</h1>
-        <img src="{{ url_for('static', filename='images/blankPFP.png') }}">
+        <img src="{{ url_for('static', filename='images/blankPFP.png') }}" class="pfp">
         <p>Stuff goes in here hehe</p>
     </div>
 </body>
-</html>
+{% endblock %}

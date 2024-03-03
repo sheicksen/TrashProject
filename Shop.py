@@ -38,6 +38,8 @@ def Main():
     image_2 = pygame.transform.scale(image_2, (75, 75))
     image_3 = pygame.image.load('images/brownArmor.png')
     image_3 = pygame.transform.scale(image_3, (75, 75))
+    image_4 = pygame.image.load('static/images/homeButt.png')
+    image_4 = pygame.transform.scale(image_4, (75, 75))
     pygame.display.set_caption('Store')
     pygame.display.update()
     running = True
@@ -101,10 +103,11 @@ def Main():
         pygame.draw.rect(screen, button3_color, (button_3_x, button_3_y, 80, 80))
         screen.blit(image_2, (button_1_x,button_1_y))
         screen.blit(image_3, (button_2_x,button_2_y))
+        screen.blit(image_4, (button_3_x, button_3_y))
         # flip() the display to put your work on screen
         pygame.display.flip()
 
         clock.tick(60)  # limits FPS to 60
     pygame.quit()
 
-Main()
+#Main()

@@ -1,6 +1,7 @@
 import pygame
 from Shop import sword_upgrade_level, armor_upgrade_level
 from dataclasses import dataclass
+from random import randint
 
 # initializing pygame
 pygame.init()
@@ -9,8 +10,6 @@ pygame.init()
 SCREEN_WIDTH = 1450
 SCREEN_HEIGHT = 512
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
-bought_sword = ""
 @dataclass
 class Player:
     """
@@ -23,14 +22,17 @@ class Player:
         draw_player places the player on the left side of the screen
     """
     def __init__(self,hp,cp):
-        self.hp = hp + armor_upgrade_level
-        self.cp = cp + sword_upgrade_level
+        self.hp = hp
+        self.cp = cp
         player_image = pygame.image.load('battleImages/Tim.png')
         self.image = pygame.transform.scale(player_image,(300,300))
     def draw_player(self):
         screen.blit(self.image,(100,SCREEN_HEIGHT-350))
+    def update_levels(self):
+        self.hp = self.hp + (armor_upgrade_level*2)
+        self.cp = self.cp + (sword_upgrade_level*2)
 
-player = Player(9,4)
+player = Player(8,3)
 
 @dataclass
 class Monster():
@@ -100,6 +102,8 @@ def Main():
     pygame.display.set_caption('Battle Time')
     background = pygame.image.load('battleImages/Background.png')
     pygame.display.update()
+    player.update_levels()
+    monster = Monster(8, 8)
     """This function runs the entire program and allows this program to be run from home.py"""
     run = True
     battle = True
@@ -114,13 +118,12 @@ def Main():
 
             # check if player switches to the home screen, which runs the home screen's program
             if event.type == pygame.MOUSEBUTTONDOWN and home_button.rect.collidepoint(mouse_position):
-                from home import Main
-                Main()
+                from home import Main1
+                Main1()
 
         # draw what will always be present on battling screen
         screen.blit(background, (0, 0))
         player.draw_player()
-        #player.change_stats()
         monster.draw_monster()
 
         if battle:
@@ -133,17 +136,26 @@ def Main():
                       100)
             attack_button.draw_button()
             run_button.draw_button()
+            attacked = False
             for event in pygame.event.get():
 
                 # checks if player clicked the attack button and reduces healths accordingly
                 if (event.type == pygame.MOUSEBUTTONDOWN and attack_button.rect.collidepoint(mouse_position)
                         and monster.hp > 0 and player.hp > 0):
-                    monster.hp = monster.hp - player.cp
-                    attacked = True
-                    player.hp = player.hp - monster.cp
-
+                    if randint(1,10) == 2:
+                        monster.hp = monster.hp - player.cp
+                        player.hp = player.hp - monster.cp
+                        attacked = True
+                    if not attacked:
+                        player.hp = player.hp - monster.cp
+                        draw_text("You failed to attack the monster.", SCREEN_WIDTH - 1000, 125)
+                        draw_text("The monster attacked you and did " + str(monster.cp) + " damage.",
+                                  (SCREEN_WIDTH - 1000), 150)
+                        pygame.display.update()
+                        pygame.time.wait(2250)
+                        attacked = False
                     # displays text showing how much damage was dealt to and by the player
-                    if attacked:
+                    elif attacked:
                         draw_text("You attacked the monster and did " + str(player.cp) + " damage.",
                                   SCREEN_WIDTH - 1000, 125)
                         draw_text("The monster attacked you and did " + str(monster.cp) + " damage.",
@@ -151,6 +163,7 @@ def Main():
                         pygame.display.update()
                         pygame.time.wait(2250)
                         attacked = False
+
 
                 # checks if player clicked the run away button
                 if (event.type == pygame.MOUSEBUTTONDOWN and run_button.rect.collidepoint(mouse_position)
@@ -170,9 +183,9 @@ def Main():
                 draw_text("Good Job! You defeated the monster!", SCREEN_WIDTH - 900, 200)
                 home_button.draw_button()
             if player.hp <= 0:
-                draw_text("Good Job! PSYCH! The monster beat you.", SCREEN_WIDTH - 1000, 200)
+                draw_text("Good Job! PSYCH! The monster beat you. Pick up more trash to get stronger.", SCREEN_WIDTH - 1000, 200)
                 home_button.draw_button()
         pygame.display.update()
     pygame.quit()
 
-Main()
+#Main()

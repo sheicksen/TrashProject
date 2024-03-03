@@ -32,6 +32,10 @@ def Main():
     screen = pygame.display.set_mode((720, 360))
     image_1 = pygame.image.load('images/Shop.png')
     image_1 = pygame.transform.scale(image_1, (400, 400))
+    image_2 = pygame.image.load('images/brownSord.png')
+    image_2 = pygame.transform.scale(image_2, (75, 75))
+    image_3 = pygame.image.load('images/brownArmor.png')
+    image_3 = pygame.transform.scale(image_3, (75, 75))
     pygame.display.set_caption('Store')
     pygame.display.update()
     running = True

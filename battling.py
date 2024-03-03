@@ -1,5 +1,5 @@
-from Shop import count_swords_bought, count_armor_bought
 import pygame
+from Shop import sword_upgrade_level, armor_upgrade_level
 from dataclasses import dataclass
 
 # initializing pygame
@@ -23,15 +23,12 @@ class Player:
         draw_player places the player on the left side of the screen
     """
     def __init__(self,hp,cp):
-        self.hp = hp
-        self.cp = cp
+        self.hp = hp + armor_upgrade_level
+        self.cp = cp + sword_upgrade_level
         player_image = pygame.image.load('battleImages/Tim.png')
         self.image = pygame.transform.scale(player_image,(300,300))
     def draw_player(self):
         screen.blit(self.image,(100,SCREEN_HEIGHT-350))
-    def change_stats(self):
-        self.cp = self.cp + (count_swords_bought()*2)
-        self.hp = self.hp + (count_armor_bought()*2)
 
 player = Player(10,5)
 

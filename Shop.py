@@ -12,10 +12,10 @@ button_2_y = 150
 image_1 = pygame.image.load('images/Shop.png')
 image_1 = pygame.transform.scale(image_1, (400, 400))
 pygame.display.set_caption('Store')
-image_2 = pygame.image.load('images/red pill.png')
-image_2 = pygame.transform.scale(image_2, (125, 125))
-image_3 = pygame.image.load('images/blue pill.png')
-image_3 = pygame.transform.scale(image_3, (100, 43))
+image_2 = pygame.image.load('images/brownSord.png')
+image_2 = pygame.transform.scale(image_2, (80, 100))
+image_3 = pygame.image.load('images/brownArmor.png')
+image_3 = pygame.transform.scale(image_3, (80, 43))
 
 text_font = pygame.font.SysFont(None, 30)
 
@@ -23,6 +23,20 @@ text_font = pygame.font.SysFont(None, 30)
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
+
+swords_bought = [1]
+def count_swords_bought():
+    i = 0
+    for sword_bought in swords_bought:
+        i += 1
+    return i
+armors_bought = []
+def count_armor_bought():
+    i = 0
+    for armor_bought in armors_bought:
+        i += 1
+    return i
+
 
 def Main():
     running = True
@@ -48,16 +62,18 @@ def Main():
                 running = False
             if (button_1_x < mouse_pos_x < button_1_x + 80) and (button_1_y < mouse_pos_y < button_1_y + 80):
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    swords_bought.append(1)
                     print("Left mouse button clicked on button 1")
             if (button_2_x < mouse_pos_x < button_2_x + 80) and (button_2_y < mouse_pos_y < button_2_y + 80):
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    armors_bought.append(1)
                     print("Left mouse button clicked on button 2")
 
         # fill the screen with a color to wipe away anything from last frame
         pygame.draw.rect(screen, button1_color, (button_1_x, button_1_y, 80, 80))
         pygame.draw.rect(screen, button2_color, (button_2_x, button_2_y, 80, 80))
-        screen.blit(image_2, (button_1_x - 25, button_1_y - 25))
-        screen.blit(image_3, (button_2_x - 10, button_2_y + 16))
+        screen.blit(image_2, (button_1_x - 2, button_1_y - 20))
+        screen.blit(image_3, (button_2_x, button_2_y + 16))
         # flip() the display to put your work on screen
         pygame.display.flip()
 

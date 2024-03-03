@@ -10,6 +10,8 @@ SCREEN_HEIGHT = 512
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption('Battle Time')
 background = pygame.image.load('battleImages/Background.png')
+
+bought_sword = ""
 @dataclass
 class Player:
     """
@@ -28,6 +30,11 @@ class Player:
         self.image = pygame.transform.scale(player_image,(300,300))
     def draw_player(self):
         screen.blit(self.image,(100,SCREEN_HEIGHT-350))
+    def change_stats(self):
+        from Shop import count_swords_bought
+        self.cp = self.cp + (count_swords_bought()*2)
+        from Shop import count_armor_bought
+        self.hp = self.hp + (count_armor_bought()*2)
 
 player = Player(10,5)
 
@@ -112,6 +119,7 @@ def Main():
         # draw what will always be present on battling screen
         screen.blit(background, (0, 0))
         player.draw_player()
+        player.change_stats()
         monster.draw_monster()
         if battle:
             # displays the amount of health the player and monster have

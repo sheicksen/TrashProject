@@ -5,7 +5,6 @@ import pygame
 pygame.init()
 screen = pygame.display.set_mode((720, 360))
 clock = pygame.time.Clock()
-
 button_1_x = 220
 button_1_y = 150
 button_2_x = 420
@@ -25,6 +24,18 @@ def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
 
+swords_bought = [1]
+def count_swords_bought():
+    i = 0
+    for sword_bought in swords_bought:
+        i += 1
+    return i
+armors_bought = []
+def count_armor_bought():
+    i = 0
+    for armor_bought in armors_bought:
+        i += 1
+    return i
 
 armor_upgrade_level = 0
 sword_upgrade_level = 0
@@ -32,10 +43,14 @@ sword_upgrade_level = 0
 def Main():
     global armor_upgrade_level
     global sword_upgrade_level
+    screen = pygame.display.set_mode((720, 360))
+    image_1 = pygame.image.load('images/Shop.png')
+    image_1 = pygame.transform.scale(image_1, (400, 400))
+    pygame.display.set_caption('Store')
+    pygame.display.update()
     running = True
     while running:
         current_coin_count = 0
-
         screen.fill("Salmon")
         screen.blit(image_1, (screen.get_width() / 4 - 20, 0))
         button1_color = "blue"
@@ -72,7 +87,6 @@ def Main():
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                     sword_upgrade_level+=1
                     print("Left mouse button clicked on button 1")
-
             if (button_2_x < mouse_pos_x < button_2_x + 80) and (button_2_y < mouse_pos_y < button_2_y + 80):
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                     armor_upgrade_level+=1
@@ -89,4 +103,4 @@ def Main():
         clock.tick(60)  # limits FPS to 60
     pygame.quit()
 
-Main()
+#Main()

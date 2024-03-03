@@ -1,4 +1,5 @@
 import pygame
+import subprocess
 from dataclasses import dataclass
 
 pygame.init()
@@ -91,6 +92,9 @@ while run:
             if monster.hp <= 0 or player.hp <= 0:
                 battle = False
     if not battle:
+        attack_button.draw_button()
+        if (event.type == pygame.MOUSEBUTTONDOWN and attack_button.rect.collidepoint(mouse_position)):
+            subprocess.run(["python", "Shop.py"])
         if ran_away:
             draw_text("You ran away from the monster. Pick up more trash to get stronger.",SCREEN_WIDTH-1000,200)
         if monster.hp <= 0:

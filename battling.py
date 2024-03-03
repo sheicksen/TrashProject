@@ -104,7 +104,6 @@ def Main():
     background = pygame.image.load('battleImages/Background.png')
     pygame.display.update()
     player.update_levels()
-    monster.update_levels()
     run = True
     battle = True
     ran_away = False

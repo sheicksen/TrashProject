@@ -30,7 +30,7 @@ class Player:
     def draw_player(self):
         screen.blit(self.image,(100,SCREEN_HEIGHT-350))
 
-player = Player(10,5)
+player = Player(9,4)
 
 @dataclass
 class Monster():

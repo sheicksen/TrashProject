@@ -143,7 +143,7 @@ def Main():
                 # checks if player clicked the attack button and reduces healths accordingly
                 if (event.type == pygame.MOUSEBUTTONDOWN and attack_button.rect.collidepoint(mouse_position)
                         and monster.hp > 0 and player.hp > 0):
-                    if randint(1,10)  >= 7:
+                    if randint(1,10)  >= 3:
                         monster.hp = monster.hp - player.cp
                         player.hp = player.hp - monster.cp
                         attacked = True

@@ -103,7 +103,7 @@ def Main():
     background = pygame.image.load('battleImages/Background.png')
     pygame.display.update()
     player.update_levels()
-    monster = Monster(6, 15)
+    monster = Monster(8, 8)
     """This function runs the entire program and allows this program to be run from home.py"""
     run = True
     battle = True

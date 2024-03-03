@@ -2,29 +2,24 @@
 
 {% block content %}
     <h1>Monsters in your area</h1>
-    <div>
-        {% for monster in monsters %}
-        <div class="card container">
-            <div class="row card-header">
-                <div class="col-sm">
-                    <p class="card-title">{{ monster.name }}</p>
-                </div>
-                <div class="col-sm"><a class="card-link">{{ monster.coordinates }}</a></div>
-            </div>
-            <div class="row">
-                <div class="col-sm">
-                    <img class="card-img" src="{{ url_for('static', filename=monster.image_url) }}" alt="Pile of trash at coordinates">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm">
-                    <p>{{ monster.size }}</p>
-                </div>
-                <div class="col-sm">
-                    <p>{{ monster.date_added }}</p>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3" style="text-align:center;">
+            {% for monster in monsters %}
+            <div class="column-sm-6">
+                <div class="card" style="width: 18rem; text-align:left; margin:2rem;">
+                    <img class="card-img-top" src="{{ url_for('static', filename=monster.image_url) }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ monster.name }}</h5>
+                        <p class="card-text">Added on:  {{ monster.date_added }}</p>
+                        <p class="card-text">Located: {{ monster.coordinates }}</p>
+                        <p class="card-text">Size Rating: {{ monster.size }}</p>
+                        <a href="#" class="btn btn-dark">Start Quest</a>
+                     </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
+
+        </div>
+
     </div>
 {% endblock %}

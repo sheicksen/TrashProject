@@ -6,6 +6,7 @@ import datetime
 from dataclasses import dataclass
 from werkzeug.utils import secure_filename
 
+## Constants
 UPLOAD_FOLDER = 'static/images/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 super_secret = os.urandom(24)
@@ -27,6 +28,8 @@ class Character:
     money: int
     picture: str
 
+
+## Currently not using any of the email/password/authentication attributes
 @dataclass
 class User:
     id: uuid
@@ -50,7 +53,7 @@ class Quest:
     id: uuid
     active: bool
     party: []
-    battle: Monster
+    monster: Monster
 
 
 def create_character() -> Character:
@@ -76,13 +79,17 @@ def create_monster(name:str, location:str, size:int, image_url:str) -> Monster:
 
 
 def create_quest(monster:Monster, user:User) -> Quest:
-    return Quest(id=uuid.uuid4(), active=True, party=[user], battle=monster)
+    return Quest(id=uuid.uuid4(), active=True, party=[user], monster=monster)
 
-monsters = [Monster(uuid.uuid4(), "Gup", 2, "39.698488, -75.689280", "images/blankPFP.png", "02/03/2024")]
+monsters = [Monster(uuid.uuid4(), "Gup", 5, "39.698488, -75.689280", "images/blankPFP.png", "02/03/2024"),
+            Monster(uuid.uuid4(), "Gip", 2, "39.698488, -75.689280", "images/blankPFP.png", "02/02/2024"),
+            Monster(uuid.uuid4(), "Geep", 3, "39.698488, -75.689280", "images/blankPFP.png", "03/31/2024")]
 
+# This is the dummy user, representing the user that would normally have this browser session
 users = [
     create_user(name="Lorem Ipsum", email="lorem@email.com", password_hash="XDFEAFAGAG45343", image_url="images/blankPFP.png")
 ]
+users[0].current_battles.append(create_quest(monsters[0], users[0]))
 
 
 def find_user_by_id(id:uuid, users:[]) -> User:
@@ -109,12 +116,6 @@ def allowed_file(filename) -> bool:
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-# login_manager.init_app(app)
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.get(user_id)
-
 
 @app.route("/")
 def home():
@@ -163,6 +164,7 @@ def get_profile(username):
         return render_template("profile.html",
                                username=user.name,
                                victories=len(user.victories),
+                               quests= user.current_battles,
                                level=user.character.level,
                                profile=user.profile_picture,
                                character=user.character.picture

@@ -1,13 +1,17 @@
 #nav-title {
     display:block;
     float: left;
-    color: orange;
+    color: white;
     left: 20px;
 }
-
-.navbar {
-    background-color: #35374B;
+.monster-card {
+    height: 200px;
+    width: 200px;
 }
+.navbar {
+    background-color: ;
+}
+
 .navlinks {
   list-style-type: none;
   margin: 0;
@@ -17,6 +21,9 @@
 .navli {
     float: right;
     border-right: 1px solid #bbb;
+}
+.navli:first-child{
+    border-right: none;
 }
 
 .navlink {
@@ -37,4 +44,9 @@
 body {
     background-color: #50727B;
     text-align: center;
+}
+
+a:hover {
+    text-decoration: none;
+    color: orange;
 }

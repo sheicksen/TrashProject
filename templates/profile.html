@@ -1,11 +1,37 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<body>
-    <div>
-        <h1>{{ username }}</h1>
-        <img src="{{ url_for('static', filename='images/blankPFP.png') }}" class="pfp">
-        <p>Stuff goes in here hehe</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-1">
+                <img src="{{ url_for('static', filename=profile) }}" class="pfp">
+            </div>
+            <div class="col-2">
+                <h1 style="bottom:0;">{{ username }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3" style="text-align: left;">
+                <h2>About the User</h2>
+            </div>
+        </div>
     </div>
-</body>
+    <div>
+        <p>Character Name: {{ username }}</p>
+        <p>Character Level: {{ level }}</p>
+        <img src="{{url_for('static', filename= character )}}" alt="Player Character">
+        <p>Monsters Defeated: {{ victories }}</p>
+    </div>
+    <div>
+        <h3>Current Quests</h3>
+        <div class="container">
+
+        </div>
+    </div>
+    <div>
+        <h3>Past Quests</h3>
+        <div>
+
+        </div>
+    </div>
 {% endblock %}

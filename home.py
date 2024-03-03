@@ -7,24 +7,24 @@ pygame.init()
 # setting up the background screen
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 800
-screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Home Screen')
 home_screen = pygame.image.load('battleImages/white_background.jpg')
 
 # setting up title text
-font = pygame.font.SysFont('Arial',50)
-text_color = (0,0,0) # black
+font = pygame.font.SysFont('Arial', 50)
+text_color = (0, 0, 0)  # black
 
 
-def draw_text(text:str,x:int,y:int):
+def draw_text(text: str, x: int, y: int):
     """
         This function places text at a specified location on the screen
         :param text: represents the text you wish to display
         :param x: represents the x-coordinate of where you wish to display the text
         :param y: represents the y-coordinate of where you wish to display the text
         """
-    text_box = font.render(text,True,text_color)
-    screen.blit(text_box,(x,y))
+    text_box = font.render(text, True, text_color)
+    screen.blit(text_box, (x, y))
 
 
 @dataclass
@@ -38,23 +38,25 @@ class Button():
         Methods:
             draw_button places the button image at the specified location
         """
-    def __init__(self,image,x,y):
+
+    def __init__(self, image, x, y):
         self.x = x
         self.y = y
         self.image = pygame.image.load(image)
         self.rect = self.image.get_rect()
         self.rect.x = self.x
         self.rect.y = self.y
+
     def draw_button(self):
-        screen.blit(self.image,(self.x,self.y))
+        screen.blit(self.image, (self.x, self.y))
 
 
 # create button instances that will be drawn in the Main function
-store_button = Button('static/images/ShopButt.png',SCREEN_WIDTH/2-50,SCREEN_HEIGHT/2 - 100)
-battle_button = Button('static/images/toBattle.png',SCREEN_WIDTH/2-50,SCREEN_HEIGHT/2 - 25)
+store_button = Button('static/images/ShopButt.png', SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - 100)
+battle_button = Button('static/images/toBattle.png', SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - 25)
 
 
-def Main():
+def Main1():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption('Home Screen')
     home_screen = pygame.image.load('battleImages/white_background.jpg')
@@ -82,4 +84,5 @@ def Main():
         pygame.display.update()
     pygame.quit()
 
-Main()
+
+Main1()

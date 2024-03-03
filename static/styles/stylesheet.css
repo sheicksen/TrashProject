@@ -1,0 +1,40 @@
+#nav-title {
+    display:block;
+    float: left;
+    color: orange;
+    left: 20px;
+}
+
+.navbar {
+    background-color: #35374B;
+}
+.navlinks {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navli {
+    float: right;
+    border-right: 1px solid #bbb;
+}
+
+.navlink {
+    display: block;
+    padding: 0px 10px 0px 10px;
+    color: white;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.pfp {
+    height: 100px;
+    width: 100px;
+    box-shadow: 5px 10px;
+    border-radius: 20%;
+}
+
+body {
+    background-color: #50727B;
+    text-align: center;
+}

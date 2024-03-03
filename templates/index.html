@@ -1,22 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Trash Destroyer</title>
-</head>
-<body>
-    <div>
-        <nav>
-            <h3>Trash Destroyer</h3>
-            <a>Home</a>
-            <a href="{{url_for('get_profile', username='FooFighter')}}">Profile</a>
-            <a>About</a>
-            <a>Community Feed</a>
-        </nav>
-    </div>
+{% extends "layout.html" %}
+
+{% block content %}
     <h1>Monsters in your area</h1>
     <div>
-        <p>Lorem Ipsum Dollar/p>
+        {% for monster in monsters %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <p>{{ monster.name }}</p>
+                </div>
+                <div class="col-sm"><a>{{ monster.coordinates }}</a></div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <img src="{{ url_for('static', filename=monster.image_url) }}" alt="Pile of trash at coordinates">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>{{ monster.size }}</p>
+                </div>
+                <div class="col-sm">
+                    <p>{{ monster.date_added }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-</body>
-</html>
+{% endblock %}

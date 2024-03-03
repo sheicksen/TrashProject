@@ -103,6 +103,8 @@ def Main():
     pygame.display.set_caption('Battle Time')
     background = pygame.image.load('battleImages/Background.png')
     pygame.display.update()
+    player = Player(8, 3)
+    monster = Monster(6, 3)
     player.update_levels()
     run = True
     battle = True

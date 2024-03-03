@@ -9,7 +9,13 @@ button_1_x = 220
 button_1_y = 150
 button_2_x = 420
 button_2_y = 150
+image_1 = pygame.image.load('images/Shop.png')
+image_1 = pygame.transform.scale(image_1, (400, 400))
 pygame.display.set_caption('Store')
+image_2 = pygame.image.load('images/brownSord.png')
+image_2 = pygame.transform.scale(image_2, (75, 75))
+image_3 = pygame.image.load('images/brownArmor.png')
+image_3 = pygame.transform.scale(image_3, (75, 75))
 
 text_font = pygame.font.SysFont(None, 30)
 
@@ -97,4 +103,4 @@ def Main():
         clock.tick(60)  # limits FPS to 60
     pygame.quit()
 
-Main()
+#Main()

@@ -24,7 +24,7 @@ def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
 
-swords_bought = [1]
+swords_bought = []
 def count_swords_bought():
     i = 0
     for sword_bought in swords_bought:
@@ -39,6 +39,11 @@ def count_armor_bought():
 
 
 def Main():
+    screen = pygame.display.set_mode((720, 360))
+    image_1 = pygame.image.load('images/Shop.png')
+    image_1 = pygame.transform.scale(image_1, (400, 400))
+    pygame.display.set_caption('Store')
+    pygame.display.update()
     running = True
     while running:
         current_coin_count = 0
@@ -80,4 +85,4 @@ def Main():
         clock.tick(60)  # limits FPS to 60
     pygame.quit()
 
-Main()
+#Main()

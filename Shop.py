@@ -44,7 +44,6 @@ def Main():
     pygame.display.update()
     running = True
     while running:
-
         screen.fill("Salmon")
         screen.blit(image_1, (screen.get_width() / 4 - 20, 0))
         button1_color = "blue"

@@ -20,13 +20,15 @@
         <p>Character Name: {{ username }}</p>
         <p>Character Level: {{ level }}</p>
         <img src="{{url_for('static', filename= character )}}" alt="Player Character">
-        <p>Monsters Defeated: {{ victories }}</p>
+        <p>Monsters Defeated: {{ monsters_def }}</p>
     </div>
     <div>
         <h3>Current Quests</h3>
         <div class="container">
-            {% for quest in quests %}
-            <div class="card" style="width: 18rem; text-align:left;">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3" style="text-align:center;">
+                {% for quest in quests %}
+                <div class="column-sm-6">
+                    <div class="card" style="width: 18rem; text-align:left;">
                 <img class="card-img-top" src="{{ url_for('static', filename=quest.monster.image_url) }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ quest.monster.name }}</h5>
@@ -38,15 +40,38 @@
                             {{user.name}}
                         {% endfor %}
                     </p>
+                    <a href="{{url_for('mark_complete', ids=[quest.id, user_id])}}" class="btn btn-dark">Mark Complete</a>
                 </div>
             </div>
+                </div>
             {% endfor %}
+            </div>
+
         </div>
     </div>
     <div>
         <h3>Past Quests</h3>
-        <div>
-
-        </div>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3" style="text-align:center;">
+                {% for quest in victories %}
+                <div class="column-sm-6">
+                    <div class="card" style="width: 18rem; text-align:left;">
+                <img class="card-img-top" src="{{ url_for('static', filename=quest.monster.image_url) }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ quest.monster.name }}</h5>
+                    <p class="card-text">Date Started:  {{ quest.monster.date_added }}</p>
+                    <p class="card-text">Located: {{ quest.monster.coordinates }}</p>
+                    <p class="card-text">Size Rating: {{ quest.monster.size }}</p>
+                    <p class="card-text">Party Members:
+                        {% for user in quest.party %}
+                            {{user.name}}
+                        {% endfor %}
+                    </p>
+                    <a href="#" class="btn btn-dark">View Quest</a>
+                </div>
+            </div>
+                </div>
+            {% endfor %}
+            </div>
     </div>
 {% endblock %}

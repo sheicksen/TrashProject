@@ -1,23 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>Monsters in your area</h1>
+    <h1>Monsters in your area {{user.name}}</h1>
     <div class="container">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3" style="text-align:center;">
             {% for monster in monsters %}
-            <div class="column-sm-6">
-                <div class="card" style="width: 18rem; text-align:left; margin:2rem;">
-                    <img class="card-img-top" src="{{ url_for('static', filename=monster.image_url) }}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ monster.name }}</h5>
-                        <p class="card-text">Added on:  {{ monster.date_added }}</p>
-                        <p class="card-text">Located: {{ monster.coordinates }}</p>
-                        <p class="card-text">Size Rating: {{ monster.size }}</p>
-                        <a href="#" class="btn btn-dark">Start Quest</a>
-                     </div>
+                <div class="column-sm-6">
+                    <div class="card" style="width: 18rem; text-align:left; margin:2rem;">
+                        <img class="card-img-top" src="{{ url_for('static', filename=monster.image_url) }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ monster.name }}</h5>
+                            <p class="card-text">Added on:  {{ monster.date_added }}</p>
+                            <p class="card-text">Located: {{ monster.coordinates }}</p>
+                            <p class="card-text">Size Rating: {{ monster.size }}</p>
+                            <a href="{{url_for('add_quest', ids=[monster.id, user.get_id()])}}" class="btn btn-dark">Start Quest</a>
+                         </div>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
 
         </div>
 

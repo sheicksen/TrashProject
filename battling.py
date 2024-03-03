@@ -98,13 +98,14 @@ run_button = Button('battleImages/Run.png',SCREEN_WIDTH-800,300)
 home_button = Button('static/images/homeButt.png',SCREEN_WIDTH/2 - 200, SCREEN_HEIGHT/2)
 
 def Main():
+    """This function runs the entire program and allows this program to be run from home.py"""
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption('Battle Time')
     background = pygame.image.load('battleImages/Background.png')
     pygame.display.update()
+    player = Player(8, 3)
+    monster = Monster(6, 3)
     player.update_levels()
-    monster = Monster(8, 8)
-    """This function runs the entire program and allows this program to be run from home.py"""
     run = True
     battle = True
     ran_away = False
@@ -142,7 +143,7 @@ def Main():
                 # checks if player clicked the attack button and reduces healths accordingly
                 if (event.type == pygame.MOUSEBUTTONDOWN and attack_button.rect.collidepoint(mouse_position)
                         and monster.hp > 0 and player.hp > 0):
-                    if randint(1,10) == 2:
+                    if randint(1,10)  >= 7:
                         monster.hp = monster.hp - player.cp
                         player.hp = player.hp - monster.cp
                         attacked = True

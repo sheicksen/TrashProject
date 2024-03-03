@@ -9,11 +9,11 @@ button_1_x = 220
 button_1_y = 150
 button_2_x = 420
 button_2_y = 150
-button_3_x = 0
-button_3_y = screen.get_height()/2
+button_3_x = screen.get_width()-80
+button_3_y = 0
 pygame.display.set_caption('Store')
 
-text_font = pygame.font.SysFont(None, 30)
+text_font = pygame.font.SysFont(None, 25)
 
 
 def draw_text(text, font, text_col, x, y):
@@ -104,6 +104,10 @@ def Main():
         screen.blit(image_2, (button_1_x,button_1_y))
         screen.blit(image_3, (button_2_x,button_2_y))
         screen.blit(image_4, (button_3_x, button_3_y))
+        if sword_upgrade_level < 4:
+            draw_text("COST: " + str(sword_upgrade_level * 10), text_font, (0, 0, 0), button_1_x, button_1_y)
+        if armor_upgrade_level < 4:
+            draw_text("COST: " + str(armor_upgrade_level * 10), text_font, (0, 0, 0), button_2_x, button_2_y)
         # flip() the display to put your work on screen
         pygame.display.flip()
 

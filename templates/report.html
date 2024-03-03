@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div style="text-align: center;">
+    <div class="card" style="text-align: left; width=80%;">
+        <div class="card-header">
+            <h2 class="card-title">Report a Trash Monster</h2>
+        </div>
+        <div class="container">
+            <form action="{{ url_for('get_report') }}" enctype="multipart/form-data" method = "post">
+        <div class="form-group">
+            <label for="name">Name your monster</label><br>
+            <input type="text" id="name" name="name"><br>
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label><br>
+            <input type="text" id="location" name="location">
+        </div>
+        <div class="form-group">
+            <label for="size">Size of monster:</label><br>
+                <select class="form-control" id="size" name="size">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="monsterImg">Share an image:</label>
+            <input type="file" id="monsterImg" name="file">
+        </div>
+        <div class="form-group">
+            <input class="btn, btn-dark" type="submit", value="Upload">
+        </div>
+    </form>
+        </div>
+
+</div>
+</div>
+
+{% endblock %}

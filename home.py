@@ -26,8 +26,8 @@ class Button():
     def draw_button(self):
         screen.blit(self.image,(self.x,self.y))
 
-store_button = Button ('battleImages/Tim.png',SCREEN_WIDTH/2-50,SCREEN_HEIGHT/2 - 100)
-battle_button = Button ('battleImages/Tim.png',SCREEN_WIDTH/2-50,SCREEN_HEIGHT/2 - 25)
+store_button = Button ('static/images/ShopButt.png',SCREEN_WIDTH/2-50,SCREEN_HEIGHT/2 - 100)
+battle_button = Button ('static/images/toBattle.png',SCREEN_WIDTH/2-50,SCREEN_HEIGHT/2 - 25)
 
 run = True
 while run:
@@ -40,10 +40,11 @@ while run:
         if event.type == pygame.QUIT:
             run = False
         if event.type == pygame.MOUSEBUTTONDOWN and store_button.rect.collidepoint(mouse_position):
-            print("go to store page") #just to make sure this is working
-            pass #will change page to store page
+            from Shop import Main
+            Main()
+
         if event.type == pygame.MOUSEBUTTONDOWN and battle_button.rect.collidepoint(mouse_position):
-            print("go to battle page") #just to make sure this is working
-            pass #will change page to store page
+            from battling import Main
+            Main()
     pygame.display.update()
 pygame.quit()

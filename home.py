@@ -55,6 +55,9 @@ battle_button = Button('static/images/toBattle.png',SCREEN_WIDTH/2-50,SCREEN_HEI
 
 
 def Main():
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    pygame.display.set_caption('Home Screen')
+    home_screen = pygame.image.load('battleImages/white_background.jpg')
     """This function runs the entire program and allows this program to be run from battling.py and Shop.py"""
     run = True
     while run:

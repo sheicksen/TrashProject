@@ -50,12 +50,13 @@ class Button():
     def draw_button(self):
         screen.blit(self.image,(self.x,self.y))
 
-attack_button = Button('battleImages/Tim.png', SCREEN_WIDTH-800,200)
-run_button = Button('battleImages/Tim.png',SCREEN_WIDTH-800,300)
+attack_button = Button('battleImages/Fight.png', SCREEN_WIDTH-800,250)
+run_button = Button('battleImages/Run.png',SCREEN_WIDTH-800,300)
 
 run = True
 battle = True
 ran_away = False
+attacked = False
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -73,10 +74,16 @@ while run:
         for event in pygame.event.get():
             if (event.type == pygame.MOUSEBUTTONDOWN and attack_button.rect.collidepoint(mouse_position)
                     and monster.hp > 0 and player.hp > 0):
-                draw_text("You attacked the monster and did " + str(player.cp) + " damage.", SCREEN_WIDTH - 1000, 200)
                 monster.hp = monster.hp - player.cp
-                draw_text("The monster attacked you and did " + str(monster.cp) + " damage.", (SCREEN_WIDTH - 1000), 300)
+                attacked = True
                 player.hp = player.hp - monster.cp
+                if attacked:
+                    draw_text("You attacked the monster and did " + str(player.cp) + " damage.", SCREEN_WIDTH - 1000, 125)
+                    draw_text("The monster attacked you and did " + str(monster.cp) + " damage.", (SCREEN_WIDTH - 1000), 150)
+                    pygame.display.update()
+                    pygame.time.wait(2250)
+                    attacked = False
+
             if (event.type == pygame.MOUSEBUTTONDOWN and run_button.rect.collidepoint(mouse_position)
                     and monster.hp > 0 and player.hp >0):
                 ran_away = True

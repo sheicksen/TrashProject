@@ -120,10 +120,11 @@ def find_monster_by_id(id:str, monsters:[]) -> Monster:
     return found_monster
 
 def find_quest_by_id(id:str, quests:[]) -> Quest:
+    found_quest = Quest(id="0", party=[], date_started="",  monster=create_monster(name="Not Found", location="Nowhere", size=0, image_url=url_for('static', filename="images/blankPFP.png")), active=False )
     for quest in quests:
         if id == quest.id:
-            return quest
-    return Quest(id=0, party=[], monster=create_monster(name="Not Found", location="Nowhere", size=0, image_url=url_for('static', filename="images/blankPFP.png")), active=False )
+            found_quest = quest
+    return found_quest
 
 
 def allowed_file(filename) -> bool:
@@ -139,7 +140,17 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def home():
-    return render_template("index.html", monsters=monsters, user=users[0])
+    unclaimed_monsters = []
+    active_quests = []
+    for monster in monsters:
+        if monster.quest_id == "None":
+            unclaimed_monsters.append(monster)
+        else:
+            quest = find_quest_by_id(monster.quest_id, quests)
+            if quest.id != "0" and quest.active:
+                active_quests.append(quest)
+
+    return render_template("index.html", monsters=unclaimed_monsters, quests=active_quests,user=users[0])
 
 @app.route("/about")
 def get_about():

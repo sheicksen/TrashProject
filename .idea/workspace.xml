@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d19cb20-ad98-48f3-925b-7f6edd6dff7c" name="Changes" comment="fixed the battling messages">
+    <list default="true" id="8d19cb20-ad98-48f3-925b-7f6edd6dff7c" name="Changes" comment="added white background for home page as well as title text box and functional buttons that need to be changed to a different image still and actually carry out the action of switching pages">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/trashDestroyer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/trashDestroyer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -75,6 +75,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/battleImages" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="trashDestroyer" />
@@ -150,7 +155,31 @@
       <option name="project" value="LOCAL" />
       <updated>1709439735885</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="starting home page?">
+      <option name="closed" value="true" />
+      <created>1709440357900</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709440357900</updated>
+    </task>
+    <task id="LOCAL-00006" summary="starting home page?">
+      <option name="closed" value="true" />
+      <created>1709440371077</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709440371077</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added white background for home page as well as title text box and functional buttons that need to be changed to a different image still and actually carry out the action of switching pages">
+      <option name="closed" value="true" />
+      <created>1709443234054</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709443234054</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,7 +201,9 @@
     <MESSAGE value="added functions to the buttons (note the text won't remove itself after quiting the game and re-entering)" />
     <MESSAGE value="pretty sure i stared this entire time but im committing just in case" />
     <MESSAGE value="fixed the battling messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the battling messages" />
+    <MESSAGE value="starting home page?" />
+    <MESSAGE value="added white background for home page as well as title text box and functional buttons that need to be changed to a different image still and actually carry out the action of switching pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="added white background for home page as well as title text box and functional buttons that need to be changed to a different image still and actually carry out the action of switching pages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -186,8 +217,9 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TrashProject$home.coverage" NAME="home Coverage Results" MODIFIED="1709440072961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TrashProject$home.coverage" NAME="home Coverage Results" MODIFIED="1709443183496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TrashProject$battling.coverage" NAME="battling Coverage Results" MODIFIED="1709439658206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TrashProject$main.coverage" NAME="main Coverage Results" MODIFIED="1709437759298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TrashProject$Shop.coverage" NAME="Shop Coverage Results" MODIFIED="1709441009183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TrashProject$main.coverage" NAME="main Coverage Results" MODIFIED="1709441198004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

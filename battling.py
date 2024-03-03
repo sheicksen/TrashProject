@@ -96,7 +96,7 @@ class Button():
 # create button instances that will be drawn in the Main function
 attack_button = Button('battleImages/Fight.png', SCREEN_WIDTH-800,250)
 run_button = Button('battleImages/Run.png',SCREEN_WIDTH-800,300)
-home_button = Button('battleImages/Tim.png',SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+home_button = Button('static/images/homeButt.png',SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
 def Main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))

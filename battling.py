@@ -9,8 +9,6 @@ pygame.init()
 SCREEN_WIDTH = 1450
 SCREEN_HEIGHT = 512
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
-bought_sword = ""
 @dataclass
 class Player:
     """
@@ -23,12 +21,15 @@ class Player:
         draw_player places the player on the left side of the screen
     """
     def __init__(self,hp,cp):
-        self.hp = hp + armor_upgrade_level
-        self.cp = cp + sword_upgrade_level
+        self.hp = hp
+        self.cp = cp
         player_image = pygame.image.load('battleImages/Tim.png')
         self.image = pygame.transform.scale(player_image,(300,300))
     def draw_player(self):
         screen.blit(self.image,(100,SCREEN_HEIGHT-350))
+    def update_levels(self):
+        self.hp = self.hp + (armor_upgrade_level*2)
+        self.cp = self.cp + (sword_upgrade_level*2)
 
 player = Player(9,4)
 
@@ -100,6 +101,7 @@ def Main():
     pygame.display.set_caption('Battle Time')
     background = pygame.image.load('battleImages/Background.png')
     pygame.display.update()
+    player.update_levels()
     """This function runs the entire program and allows this program to be run from home.py"""
     run = True
     battle = True
@@ -114,13 +116,12 @@ def Main():
 
             # check if player switches to the home screen, which runs the home screen's program
             if event.type == pygame.MOUSEBUTTONDOWN and home_button.rect.collidepoint(mouse_position):
-                from home import Main
-                Main()
+                from home import Main1
+                Main1()
 
         # draw what will always be present on battling screen
         screen.blit(background, (0, 0))
         player.draw_player()
-        #player.change_stats()
         monster.draw_monster()
 
         if battle:
@@ -175,4 +176,4 @@ def Main():
         pygame.display.update()
     pygame.quit()
 
-Main()
+#Main()

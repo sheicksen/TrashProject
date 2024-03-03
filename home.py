@@ -29,22 +29,24 @@ class Button():
 store_button = Button ('static/images/ShopButt.png',SCREEN_WIDTH/2-50,SCREEN_HEIGHT/2 - 100)
 battle_button = Button ('static/images/toBattle.png',SCREEN_WIDTH/2-50,SCREEN_HEIGHT/2 - 25)
 
-run = True
-while run:
-    mouse_position = pygame.mouse.get_pos()
-    screen.blit(home_screen, (0, 0))
-    draw_text("Game Title",int(SCREEN_WIDTH/2 - 125), 100)
-    store_button.draw_button()
-    battle_button.draw_button()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-        if event.type == pygame.MOUSEBUTTONDOWN and store_button.rect.collidepoint(mouse_position):
-            from Shop import Main
-            Main()
+def Main():
+    run = True
+    while run:
+        mouse_position = pygame.mouse.get_pos()
+        screen.blit(home_screen, (0, 0))
+        draw_text("Game Title", int(SCREEN_WIDTH / 2 - 125), 100)
+        store_button.draw_button()
+        battle_button.draw_button()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+            if event.type == pygame.MOUSEBUTTONDOWN and store_button.rect.collidepoint(mouse_position):
+                from Shop import Main
+                Main()
+            if event.type == pygame.MOUSEBUTTONDOWN and battle_button.rect.collidepoint(mouse_position):
+                from battling import Main
+                Main()
+        pygame.display.update()
+    pygame.quit()
 
-        if event.type == pygame.MOUSEBUTTONDOWN and battle_button.rect.collidepoint(mouse_position):
-            from battling import Main
-            Main()
-    pygame.display.update()
-pygame.quit()
+Main()

@@ -52,6 +52,7 @@ class Button():
 
 attack_button = Button('battleImages/Fight.png', SCREEN_WIDTH-800,250)
 run_button = Button('battleImages/Run.png',SCREEN_WIDTH-800,300)
+home_button = Button('battleImages/Tim.png',SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
 def Main():
     run = True
@@ -59,10 +60,13 @@ def Main():
     ran_away = False
     attacked = False
     while run:
+        mouse_position = pygame.mouse.get_pos()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        mouse_position = pygame.mouse.get_pos()
+            if event.type == pygame.MOUSEBUTTONDOWN and home_button.rect.collidepoint(mouse_position):
+                from home import Main
+                Main()
         screen.blit(background, (0, 0))
         player.draw_player()
         monster.draw_monster()
@@ -96,12 +100,14 @@ def Main():
                     battle = False
         if not battle:
             if ran_away:
-                draw_text("You ran away from the monster. Pick up more trash to get stronger.", SCREEN_WIDTH - 1000,
-                          200)
+                draw_text("You ran away from the monster. Pick up more trash to get stronger.", SCREEN_WIDTH - 1000,200)
+                home_button.draw_button()
             if monster.hp <= 0:
                 draw_text("Good Job! You defeated the monster!", SCREEN_WIDTH - 900, 200)
+                home_button.draw_button()
             if player.hp <= 0:
                 draw_text("Good Job! PSYCH! The monster beat you.", SCREEN_WIDTH - 1000, 200)
+                home_button.draw_button()
         pygame.display.update()
     pygame.quit()
 

@@ -66,7 +66,7 @@ def Main1():
         mouse_position = pygame.mouse.get_pos()
         # displays what will always be present on home screen
         screen.blit(home_screen, (0, 0))
-        draw_text("Game Title", int(SCREEN_WIDTH / 2 - 125), 100)
+        draw_text("Trash Destroyer", int(SCREEN_WIDTH / 2 - 180), 100)
         store_button.draw_button()
         battle_button.draw_button()
         for event in pygame.event.get():

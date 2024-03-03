@@ -1,5 +1,6 @@
 import pygame
 from dataclasses import dataclass
+
 pygame.init()
 
 SCREEN_WIDTH = 1450
@@ -9,7 +10,6 @@ pygame.display.set_caption('Battle Time')
 background = pygame.image.load('battleImages/Background.png')
 @dataclass
 class Player:
-    """Returns a character whose stats correspond with what's been unlocked by the player"""
     def __init__(self,hp,cp):
         self.hp = hp
         self.cp = cp
@@ -44,13 +44,13 @@ class Button():
         self.x = x
         self.y = y
         self.image = pygame.image.load(image)
-    def draw_button(self):
         self.rect = self.image.get_rect()
         self.rect.x = self.x
         self.rect.y = self.y
+    def draw_button(self):
         screen.blit(self.image,(self.x,self.y))
 
-attack_button = Button('battleImages/Tim.png', SCREEN_WIDTH-800,225)
+attack_button = Button('battleImages/Tim.png', SCREEN_WIDTH-800,200)
 run_button = Button('battleImages/Tim.png',SCREEN_WIDTH-800,300)
 
 run = True
@@ -65,24 +65,31 @@ while run:
     player.draw_player()
     monster.draw_monster()
     if battle:
-        draw_text("Oh no, there's a monster! Would you like to attack it or try to run away?",SCREEN_WIDTH-1000,200)
+        draw_text("HP: " + str(player.hp), 200, SCREEN_HEIGHT - 370)
+        draw_text("HP: " + str(monster.hp), SCREEN_WIDTH - 250, SCREEN_HEIGHT - 370)
+        draw_text("Oh no, there's a monster! Would you like to attack it or try to run away?",SCREEN_WIDTH-1000,100)
         attack_button.draw_button()
         run_button.draw_button()
         for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN and attack_button.rect.collidepoint(mouse_position) and monster.hp > 0 and player.hp > 0:
+            if (event.type == pygame.MOUSEBUTTONDOWN and attack_button.rect.collidepoint(mouse_position)
+                    and monster.hp > 0 and player.hp > 0):
+                draw_text("You attacked the monster and did " + str(player.cp) + " damage.", SCREEN_WIDTH - 1000, 200)
                 monster.hp = monster.hp - player.cp
+                draw_text("The monster attacked you and did " + str(monster.cp) + " damage.", (SCREEN_WIDTH - 1000), 300)
                 player.hp = player.hp - monster.cp
-            if event.type == pygame.MOUSEBUTTONDOWN and run_button.rect.collidepoint(mouse_position) and monster.hp > 0 and player.hp >0:
-                ran_away = False
+            if (event.type == pygame.MOUSEBUTTONDOWN and run_button.rect.collidepoint(mouse_position)
+                    and monster.hp > 0 and player.hp >0):
+                ran_away = True
                 battle = False
-            if monster.hp <=0 or player.hp <=0:
+            if monster.hp <= 0 or player.hp <= 0:
                 battle = False
-    if not ran_away:
-        draw_text("You ran away from the monster. Pick up more trash to get stronger.",SCREEN_WIDTH-1000,200)
-    if monster.hp <= 0:
-        draw_text("Good Job! You defeated the monster!",SCREEN_WIDTH-1000,200)
-    if player.hp <= 0:
-        draw_text("Good Job! PSYCH! The monster beat you.",SCREEN_WIDTH-1000,200)
+    if not battle:
+        if ran_away:
+            draw_text("You ran away from the monster. Pick up more trash to get stronger.",SCREEN_WIDTH-1000,200)
+        if monster.hp <= 0:
+            draw_text("Good Job! You defeated the monster!",SCREEN_WIDTH-900,200)
+        if player.hp <= 0:
+            draw_text("Good Job! PSYCH! The monster beat you.",SCREEN_WIDTH-1000,200)
     pygame.display.update()
 pygame.quit()
 
